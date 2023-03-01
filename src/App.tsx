@@ -1,14 +1,21 @@
-import { useState } from 'react'
 import './App.css'
-import Header from './components/Header'
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
+import Portfolio from './pages/Portfolio'
+import Landing from './pages/Landing'
+
 
 function App() {
-  const [count, setCount] = useState(0)
-
   return (
-    <div>
-      <Header />
+    <div className="content">
+      <Router>
+        <Routes>
+          <Route path="/" element={<Landing/>} />
+          <Route path="/portfolio" element={<Portfolio />} />
+
+        </Routes>
+      </Router>
     </div>
+   
   )
 }
 
