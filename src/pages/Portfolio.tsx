@@ -1,8 +1,12 @@
 import React from "react";
 import Header from "../components/Header";
+import Sidebar from "../components/Sidebar";
 const Portfolio = () => {
     return(
-        <Header />
+        <div className="portfolio">
+            <Header />
+            <Sidebar/>
+        </div>
     );
 }
 

@@ -5,7 +5,7 @@ import { FaBell } from "react-icons/fa";
 
 const Header =() => {
     return(
-        <nav className="flex sm:gap-5 p-1 sm:p-3 justify-between items-center border h-16">
+        <nav className="flex sm:gap-5 p-1 sm:p-3 justify-between items-center border h-16 shadow-md">
             <form action="post" className="flex sm:ml-5">
                 <h1 className="text-xl sm:text-2xl font-bold mr-5">CryptoFolio</h1>
                 <input className="text-xs sm:text-base border p-1 px-5 rounded-full shadow-md w-1/2" type="text" placeholder="Search all assets"/>
