@@ -8,7 +8,12 @@ import axios from "axios";
 
 // https://docs.moralis.io/authentication-api/how-to-authenticate-users-with-metamask-using-react
 
-const Landing = () => {
+interface LandingProps {
+    handleAuth: () => Promise<void>;
+}
+
+
+const Landing: React.FC<LandingProps> = () => {
     const navigate = useNavigate();
 
     const { connectAsync } = useConnect();
@@ -52,7 +57,7 @@ const Landing = () => {
     return (
         <div className="landing">
             <Header />
-            <LandingContent />
+            <LandingContent handleAuth = {handleAuth}  />
         </div>
     )
 }
