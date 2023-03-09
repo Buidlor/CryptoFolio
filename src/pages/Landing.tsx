@@ -24,6 +24,7 @@ const Landing: React.FC<LandingProps> = () => {
     const handleAuth = async () => {
         //disconnects the web3 provider metamask
         if (isConnected) {
+            console.log("test")
             await disconnectAsync();
         }
         // enabling the web3 provider metamask
@@ -31,7 +32,7 @@ const Landing: React.FC<LandingProps> = () => {
             connector: new InjectedConnector(),
         });
 
-        const userData = { address: account, chain: chain.id, network: 'evm' };
+        const userData = { address: account, chain: 1, network: 'evm' };
         // making a post request to our 'request-message' endpoint
         const { data } = await axios.post(
             'http://localhost:3000/request-message',
