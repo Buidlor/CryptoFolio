@@ -1,8 +1,11 @@
+
 interface LandingContentProps {
     handleAuth: () => Promise<void>;
 }
 
 const LandingContent:React.FC<LandingContentProps> = ({ handleAuth }) => {
+  
+    
     return (
         <div className="landingcontent">
             <div className="flex justify-center items-center flex-col h-screen" style={ {height: "calc(100vh - 4rem)"}}>

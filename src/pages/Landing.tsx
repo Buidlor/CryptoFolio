@@ -52,6 +52,7 @@ const Landing: React.FC<LandingProps> = () => {
             { withCredentials: true } //set cookie from express server
         );
         navigate('/portfolio');
+        console.log("Signed in");
     };
 
     return (
