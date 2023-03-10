@@ -14,13 +14,18 @@ const client = createClient({
   autoConnect: true,
 })
 
-function App() {
+interface AppProps {
+  handleAuth: () => Promise<void>;
+}
+
+
+function App({ handleAuth }:AppProps): React.ReactElement {
   return (
     <div className="content">
       <WagmiConfig client={client}>
         <Router>
           <Routes>
-            <Route path="/" element={<Landing/>} />
+            <Route path="/" element={<Landing handleAuth = {handleAuth}/>} />
             <Route path="/portfolio" element={<Portfolio />} />
           </Routes>
         </Router>
