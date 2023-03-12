@@ -7,19 +7,20 @@ const PortfolioBody = ({session}) => {
 
     const [assets, setAssets] = useState<any>([]);
     useEffect(() => {   
-        axios(`http://localhost:3000/assets/${session.address}`, {     
-            withCredentials: true,
-        })
-        .then(({ data }) => {
-            setAssets(data);
-            
-        }).catch((err) => {
-            console.log(err);
-        })
-    
-    }, [session]);
+        if (session?.address){
+            axios(`http://localhost:3000/assets/${session.address}`, {     
+                withCredentials: true,
+            })
+            .then(({ data }) => {
+                setAssets(data);
+                
+            }).catch((err) => {
+                console.log(err);
+            })
+        }
+    }, [session?.address]);
 
-    console.log(assets);
+    //console.log(assets);
     
     return ( 
         <div className="portfolio-body ml-5">
@@ -27,7 +28,7 @@ const PortfolioBody = ({session}) => {
                 <p className=" text-2xl font-bold ">Welcome</p>
                 <p className="text-xl font-bold">{session.address}</p>
             </div>
-           <div className=" ">
+           <div >
                 <h1 className=" text-3xl ">Assets</h1>
                 <table className="border-separate border-spacing-2 border border-slate-500">
                     <thead>
@@ -46,12 +47,20 @@ const PortfolioBody = ({session}) => {
                         
                     </tbody>
                 </table>
-                
-                    {/* <pre>
-                        {JSON.stringify(assets, null, 2)}
-                    </pre> */}
-                
            </div>
+                
+                     <pre>
+                        {JSON.stringify(
+                            assets.tokens.map(token => ({
+                                value: token.value, 
+                                name: token.token.name,
+                                symbol: token.token.symbol,
+                                contractAddress: token.token.contractAddress
+                            })), 
+                            null, 
+                            2
+                        )}
+                    </pre> 
 
 
         </div>
