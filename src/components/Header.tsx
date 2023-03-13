@@ -8,15 +8,17 @@ import { useState, useEffect } from "react";
 
 
 
-const Header =({session}) => {
+const Header =({session, handleSearch, handleSubmit}) => {
     const { disconnectAsync } = useDisconnect();
     const navigate = useNavigate();
     const [walletButton, setWalletButton] = useState("Wallet");
+    
 
     useEffect(() => {
         setWalletButton(session ? session.address.slice(0,5) + "..." +session.address.slice(-5) : "Wallet");
     }, [session]); 
-    
+
+
 
     async function signOut() {
         await disconnectAsync();
@@ -28,11 +30,11 @@ const Header =({session}) => {
     }
    
     return(
-        <nav className="flex sm:gap-5 p-1 sm:p-3 justify-between items-center border h-16 shadow-md">
+        <nav className="flex sm:gap-5 p-1 sm:p-3 justify-between items-center border h-16  shadow-md">
             <form action="post" className="flex sm:ml-5">
                 <h1 className="text-xl sm:text-2xl font-bold mr-5">CryptoFolio</h1>
-                <input className="text-xs sm:text-base border p-1 px-5 rounded-full shadow-md w-1/2" type="text" placeholder="Search all assets"/>
-                <button className="p-1 mx-1 hidden sm:block" type="submit">
+                <input className="text-xs sm:text-base border p-1 px-5 rounded-full shadow-md w-96" type="text" onChange={handleSearch} id="handleSearch" placeholder="Search address"/>
+                <button className="p-1 mx-1 hidden sm:block" type="submit" onClick={handleSubmit}>
                     <FaSearch />
                 </button> 
             </form>

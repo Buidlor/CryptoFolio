@@ -11,7 +11,8 @@ const Sidebar = ({session}) => {
     }, [session]); 
 
     return(
-        <div className="sidebar bg-gray-800 text-white w-1/6 h-screen shadow-md" style={{height: "calc(100vh - 4rem)"}}> 
+        //
+        <div className="sidebar bg-gray-800 text-white w-1/6  h-screen fixed shadow-md" style={{height: "calc(100vh - 4rem)"}} > 
             <div className="sidebar border-b p-5 flex items-center gap-5">
                 <img src="./src/assets/metamask-icon-scaled.png" alt="mm fox" className="w-1/6"/>
                 <div>
