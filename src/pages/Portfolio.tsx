@@ -5,6 +5,7 @@ import { useEffect, useState } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import PortfolioBody from "../components/PortfolioBody";
+import TrackBody from "../components/TrackBody";
 
 interface Session {
     address: string;
@@ -15,7 +16,7 @@ const Portfolio = () => {
     const navigate = useNavigate();
     const [session, setSession] = useState<Session>({address: ""});
     const [search, setSearch] = useState<string>("");
-    const [assets, setAssets] = useState<any>([]);
+    const [assetsB, setAssetsB] = useState<any>([]);
    
    
     useEffect(() => {
@@ -49,27 +50,33 @@ const Portfolio = () => {
         e.preventDefault();
         //need to set search to the value of handlesearch
 
-        await axios(`http://localhost:3000/assets/${search}`, {     
+        await axios(`http://localhost:3000/assetsB/${search}`, {     
             withCredentials: true,
         })
         .then(({ data }) => {
-            setAssets(data);
+            setAssetsB(data);
         }).catch((err) => {
             console.log(err);
         })
-        return assets
+        return assetsB
     }
     
-    console.log(assets);
+    console.log(assetsB);
     return(
         <div className="portfolio ">
             <Header session ={session} handleSearch = {handleSearch} handleSubmit={handleSubmit} />
             <div className="flex overflow-y-auto">
                 <Sidebar session ={session}/>
-                <PortfolioBody 
-                    session = {session}
-                    assetsB = {assets} 
-                />
+                { /* show the trackBody if an address is entered */}
+                { assetsB.length === 0 ? 
+                    <PortfolioBody 
+                        session = {session}
+                        assetsB = {assetsB} 
+                    /> :
+                    <TrackBody
+                        assetsB = {assetsB}
+                    />
+                }
             </div>
         </div>
     );
