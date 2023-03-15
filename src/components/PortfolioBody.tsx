@@ -3,7 +3,7 @@ import { useState, useEffect } from "react";
 import axios from "axios";
 
 
-const PortfolioBody = ({session, assetsB}) => {
+const PortfolioBody = ({session }) => {
 
     const [assets, setAssets] = useState<any>([]);
     
@@ -85,13 +85,7 @@ const PortfolioBody = ({session, assetsB}) => {
                     }
                     </tbody>
                 </table>
-                <pre>
-                {JSON.stringify(
-                    assetsB.tokens,
-                    null, 
-                    2
-                    )}
-                </pre> 
+              
             </div>    
 
         </div>

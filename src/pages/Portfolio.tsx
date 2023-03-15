@@ -50,7 +50,7 @@ const Portfolio = () => {
         e.preventDefault();
         //need to set search to the value of handlesearch
 
-        await axios(`http://localhost:3000/assetsB/${search}`, {     
+        await axios(`http://localhost:3000/assets/${search}`, {     
             withCredentials: true,
         })
         .then(({ data }) => {
@@ -61,7 +61,7 @@ const Portfolio = () => {
         return assetsB
     }
     
-    console.log(assetsB);
+    console.log(assetsB.length);
     return(
         <div className="portfolio ">
             <Header session ={session} handleSearch = {handleSearch} handleSubmit={handleSubmit} />
