@@ -33,7 +33,7 @@ const Header =({session, handleSearch, handleSubmit}) => {
         <nav className="flex sm:gap-5 p-1 sm:p-3 justify-between items-center bg-gradient-to-r from-blue-500 to-purple-600 text-white  h-16 shadow-md">
             <form action="post" className="flex sm:ml-5">
                 <h1 className="text-xl sm:text-2xl font-bold mr-5">CryptoFolio</h1>
-                <input className="text-xs sm:text-base border p-1 px-5 rounded-full shadow-md w-96" type="text" onChange={handleSearch} id="handleSearch" placeholder="Search address"/>
+                <input className="text-xs sm:text-base border p-1 px-5 rounded-full shadow-md w-96 text-black" type="text" onChange={handleSearch} id="handleSearch" placeholder="Search address"/>
                 <button className="p-1 mx-1 hidden sm:block" type="submit" onClick={handleSubmit}>
                     <FaSearch />
                 </button> 

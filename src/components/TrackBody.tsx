@@ -5,7 +5,7 @@ const TrackBody = ({assetsB}) => {
    console.log("if an address is entered. this will show up: ", assetsB.chainData)
    
     return (
-        <div className="portfolio-body h-screen ml-96 pl-7" style={{height: "calc(100vh - 4rem)"}}>
+    <div className="bg-gray-100 flex-grow p-7" style={{height: "calc(100vh - 4rem)"}}>
         <div className="my-5">
             <p className=" text-2xl font-bold ">Tracking</p>
             <p className="text-xl font-bold">{assetsB.address}</p>

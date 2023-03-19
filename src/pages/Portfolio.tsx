@@ -63,9 +63,9 @@ const Portfolio = () => {
     
     console.log(assetsB.length);
     return(
-        <div className="portfolio ">
+        <div className="portfolio bg-gray-100 min-h-screen flex flex-col">
             <Header session ={session} handleSearch = {handleSearch} handleSubmit={handleSubmit} />
-            <div className="flex overflow-y-auto">
+            <div className="flex flex-grow overflow-y-auto">
                 <Sidebar session ={session}/>
                 { /* show the trackBody if an address is entered */}
                 { assetsB.length === 0 ? 

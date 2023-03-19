@@ -24,7 +24,7 @@ const PortfolioBody = ({session }) => {
     console.log(assets.natives);
     
     return ( 
-        <div className="portfolio-body h-screen ml-96 pl-7" style={{height: "calc(100vh - 4rem)"}}>
+        <div className="bg-gray-100 h-screen p-7" style={{height: "calc(100vh - 4rem)"}}>
             <div className="my-5">
                 <p className=" text-2xl font-bold ">Welcome</p>
                 <p className="text-xl font-bold">{session.address}</p>
