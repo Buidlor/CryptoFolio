@@ -2,33 +2,31 @@ import React from "react";
 
 const TrackBody = ({assetsB}) => {   
 
-   console.log("if an address is entered. this will show up: ", assetsB.chainData)
-   
     return (
-    <div className="bg-gray-100 flex-grow p-7" style={{height: "calc(100vh - 4rem)"}}>
+    <div className="bg-gray-100 p-7 w-screen h-full md:h-screen " style={{height: "calc(100vh - 4rem)"}}>
         <div className="my-5">
             <p className=" text-2xl font-bold ">Tracking</p>
-            <p className="text-xl font-bold">{assetsB.address}</p>
+            <p className="text-xl text-green-700 font-bold">{assetsB.address}</p>
         </div>
        <div >
             <h1 className=" text-3xl my-3">Base Assets</h1>
-            <table className="border">
-                <thead className="bg-gray-50 border-b-2 border-gray-200">
+            <table className="min-w-full divide-y divide-gray-200">
+                <thead className="bg-gray-50">
                     <tr>
-                        <th className=" p-1">Chain</th>
-                        <th className=" p-1">Asset</th>
-                        <th className=" p-1">Balance</th>
-                        <th className=" p-1">Value</th>
+                        <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Chain</th>
+                        <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Asset</th>
+                        <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Balance</th>
+                        <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Value</th>
                     </tr>
                 </thead>
-                <tbody>
+                <tbody className="bg-white divide-y divide-gray-200">
                     { assetsB.chainData ? (assetsB.chainData.map((chain,i) => {
                         return (
-                            <tr>
-                                <td className=" p-2">{chain.name}</td>
-                                <td className=" p-2">{chain.symbol}</td>
-                                <td className=" p-2">{assetsB.natives[i]}</td>
-                                <td className=" p-2">dollar value here</td>
+                            <tr key={i} className={i % 2 === 0 ? "bg-white" : "bg-gray-100"}>
+                                <td className=" px-6 py-4 text-sm text-gray-900">{chain.name}</td>
+                                <td className=" px-6 py-4 text-sm text-gray-900">{chain.symbol}</td>
+                                <td className=" px-6 py-4 text-sm text-gray-900">{assetsB.natives[i]}</td>
+                                <td className=" px-6 py-4 text-sm text-gray-900">$</td>
                             </tr>
                         )
                     })): (<tr><td>loading...</td></tr>)
@@ -39,25 +37,25 @@ const TrackBody = ({assetsB}) => {
        </div>
         <div className="my-5">
             <h1 className=" text-3xl my-3">Tokens</h1>
-            <table className="table-auto w-full border">
-                <thead className="bg-gray-50 border-b-2 border-gray-200">
+            <table className="min-w-full divide-y divide-gray-200">
+                <thead className="bg-gray-50">
                     <tr>
-                        <th className="p-2 text-lg font-bold tracking-wide">token name</th>
-                        <th className="p-2 text-lg font-bold tracking-wide">token symbol</th>
-                        <th className="p-2 text-lg font-bold tracking-wide">token balance</th>
-                        <th className="p-2 text-lg font-bold tracking-wide">token value</th>
-                        <th className="p-2 text-lg font-bold tracking-wide">token contractAddress</th>
+                        <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">token name</th>
+                        <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">token symbol</th>
+                        <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">token balance</th>
+                        <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">token value</th>
+                        <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">token contractAddress</th>
                     </tr>
                 </thead>
-                <tbody>
-                    { assetsB.tokens ? (assetsB.tokens.map((token) => {
+                <tbody className="bg-white divide-y divide-gray-200">
+                    { assetsB.tokens ? (assetsB.tokens.map((token, index) => {
                         return (
-                            <tr>
-                                <td className="p-2">{token.token.name}</td>
-                                <td className="p-2">{token.token.symbol}</td>
-                                <td className="p-2">{token.value}</td>
-                                <td className="p-2">Price in $ to be calculated</td>
-                                <td className="p-2">{token.token.contractAddress}</td>
+                            <tr key={index} className={index % 2 === 0 ? "bg-white" : "bg-gray-100"}>
+                                <td className="px-6 py-4 text-sm text-gray-900">{token.token.name}</td>
+                                <td className="px-6 py-4 text-sm text-gray-900">{token.token.symbol}</td>
+                                <td className="px-6 py-4 text-sm text-gray-900">{token.value}</td>
+                                <td className="px-6 py-4 text-sm text-gray-900"> $ </td>
+                                <td className="px-6 py-4 text-sm text-gray-900">{token.token.contractAddress}</td>
                             </tr>
                         )
                     }))

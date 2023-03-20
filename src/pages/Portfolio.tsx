@@ -17,6 +17,7 @@ const Portfolio = () => {
     const [session, setSession] = useState<Session>({address: ""});
     const [search, setSearch] = useState<string>("");
     const [assetsB, setAssetsB] = useState<any>([]);
+    const [sidebarEnable, setSidebarEnable] = useState(false);
    
    
     useEffect(() => {
@@ -40,6 +41,10 @@ const Portfolio = () => {
 
     //address to follow: 
     //0x7617e602ea3f99e0c8e9b864978dea7631174b3b
+    const toggleSidebar = () => {
+        setSidebarEnable(!sidebarEnable);
+       return sidebarEnable;
+    }
 
     const handleSearch = (e: React.ChangeEvent<HTMLInputElement>) => {
         setSearch(e.target.value);
@@ -61,15 +66,16 @@ const Portfolio = () => {
         return assetsB
     }
     
-    console.log(assetsB.length);
+    
     return(
-        <div className="portfolio bg-gray-100 min-h-screen flex flex-col">
-            <Header session ={session} handleSearch = {handleSearch} handleSubmit={handleSubmit} />
-            <div className="flex flex-grow overflow-y-auto">
-                <Sidebar session ={session}/>
+        <div className="portfolio flex flex-col w-screen">
+            <Header session ={session} handleSearch = {handleSearch} handleSubmit={handleSubmit}  toggleSidebar = {toggleSidebar}/>
+            <div className="flex lg:overflow-y-auto lg:ml-[300px]">
+                <Sidebar session ={session} sidebarEnable ={sidebarEnable}/>
                 { /* show the trackBody if an address is entered */}
                 { assetsB.length === 0 ? 
                     <PortfolioBody 
+                    
                         session = {session}
                         assetsB = {assetsB} 
                     /> :
